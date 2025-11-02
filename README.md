@@ -1,4 +1,4 @@
-# 📊 E-Commerce Sales Performance Analysis Using SQL  
+# 📊 E-Commerce Sales Performance Analysis Using SQL  and Power BI
 
 ## 🧠 Objective
 To analyze E-commerce sales data and extract key business insights on revenue trends, customer behavior, profitability, delivery efficiency, and operational performance using SQL.
@@ -183,6 +183,10 @@ Visualization (Optional): Power BI
 Data Handling: Excel
 
 Documentation: GitHub
+
+Dashboard - <img width="1095" height="616" alt="Screenshot 2025-11-02 220915" src="https://github.com/user-attachments/assets/7a78b249-5821-4cf8-ad67-94703461d56b" />    <img width="1090" height="621" alt="Screenshot 2025-11-02 220951" src="https://github.com/user-attachments/assets/1e8d9fad-42f6-4b55-92bb-2ad2726e249d" />
+
+
 
 🚀 Business Impact
 
