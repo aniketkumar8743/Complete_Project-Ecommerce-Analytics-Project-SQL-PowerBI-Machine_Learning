@@ -1,7 +1,10 @@
-# 📊 E-Commerce Sales Performance Analysis Using SQL and Power BI
+# End-to-End Data Analytics & Machine Learning Project
+
+(SQL → Power BI → Machine Learning)
 
 ## 🧠 Objective
-To analyze E-commerce sales data and extract key business insights on revenue trends, customer behavior, profitability, delivery efficiency, and operational performance using SQL.
+To analyze and predict customer behavior in an e-commerce business —
+starting from sales analytics in SQL, creating insights and dashboards in Power BI, and finally building a Machine Learning model to predict product returns.
 
 ---
 
@@ -182,11 +185,85 @@ Visualization (Optional): Power BI
 
 Data Handling: Excel
 
+🤖 Machine Learning Extension: Return Prediction Model
+
+After analyzing sales patterns, the project was extended to predict whether a product will be returned, integrating advanced ML techniques.
+
+⚙️ Pipeline Overview
+Step	Process	Library/Tool
+Data Prep	Feature Encoding, Missing Value Handling	Pandas, NumPy
+Class Imbalance	Balanced dataset using SMOTE	imbalanced-learn
+Model	RandomForestClassifier (200 trees)	Scikit-learn
+Evaluation	Accuracy, Precision, Recall, F1	sklearn.metrics
+Deployment	Web app with interactive input	Streamlit
+🔍 Key ML Steps
+1️⃣ Feature Engineering
+
+Converted categorical columns using OneHotEncoder
+
+Scaled and combined numerical features
+
+Features included:
+price, discount, quantity, delivery_time_days, category, region, payment_method, customer_gender, total_amount, profit_margin, shipping_cost, customer_age
+
+2️⃣ Class Balancing with SMOTE
+from imblearn.over_sampling import SMOTE
+smote = SMOTE(random_state=42)
+X_res, y_res = smote.fit_resample(X_train, y_train)
+
+
+🧩 Balanced the dataset to fix overfitting on non-returned class.
+
+3️⃣ Model Building
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier(n_estimators=200, random_state=42, class_weight='balanced')
+model.fit(X_res, y_res)
+
+4️⃣ Pipeline for Deployment
+
+Used ColumnTransformer + Pipeline to integrate preprocessing and model:
+
+pipeline = Pipeline([
+    ('preprocessor', preprocessor),
+    ('model', model_rf)
+])
+
+
+Saved via joblib.dump(pipeline, 'return_predictor.pkl')
+
+📊 Evaluation Metrics
+Metric	Score
+Accuracy	94.5%
+Precision (Returned)	0.78
+Recall (Returned)	0.72
+F1-Score	0.75
+
+✅ After SMOTE, recall for returned class improved significantly.
+
+🧠 Streamlit App
+
+A web-based interface built for real-time prediction.
+
+Inputs:
+
+Price, Discount, Quantity, Delivery Time
+
+Category, Region, Gender, Age, etc.
+
+Outputs:
+
+Probability of return
+
+Prediction Message (Returned / Not Returned)
+
+✨ Styled with gradient UI, progress bar, animations, and success/error boxes.
+
 Documentation: GitHub
 
 Dashboard - <img width="1095" height="616" alt="Screenshot 2025-11-02 220915" src="https://github.com/user-attachments/assets/7a78b249-5821-4cf8-ad67-94703461d56b" />    <img width="1090" height="621" alt="Screenshot 2025-11-02 220951" src="https://github.com/user-attachments/assets/1e8d9fad-42f6-4b55-92bb-2ad2726e249d" />
 
 <img width="1330" height="743" alt="Screenshot 2025-11-03 162221" src="https://github.com/user-attachments/assets/3e186b22-96e5-47b1-8d1d-b008c8b8249e" />
+<img width="582" height="772" alt="image" src="https://github.com/user-attachments/assets/d0298af8-26ef-40a0-9b0e-1fa922716b7f" />
 
 
 🚀 Business Impact
@@ -206,11 +283,4 @@ Improving delivery performance and reducing return rates
 Aniket Kumar
 📍 Gurugram, Haryana
 📧 aniketkumarsingh8743@gmail.com
-
-💼 Aspiring Data Analyst skilled in SQL, Power BI, Python, and Excel.
-
-🏁 Conclusion
-
-This project demonstrates strong SQL proficiency across data cleaning, analytical querying, business interpretation, and performance storytelling — forming a key portfolio piece for Data Analyst roles.
-
 
